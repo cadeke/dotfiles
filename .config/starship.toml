@@ -4,11 +4,13 @@ format = """
 $username\
 $hostname\
 $directory\
+$kubernetes\
+$terraform\
 $git_branch\
 $git_state\
 $git_status\
-$line_break\
 $python\
+$line_break\
 $character"""
 
 [directory]
@@ -43,3 +45,11 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 detect_extensions = []
 detect_files = []
+
+[kubernetes]
+format = " ⎈ [$context]($style)"
+style = "bold purple"
+
+[terraform]
+format = " tf:[$workspace]($style)"
+style = "bold blue"
