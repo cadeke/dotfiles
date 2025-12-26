@@ -12,13 +12,14 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
 zinit snippet OMZP::git
 zinit snippet OMZP::python
-zinit snippet OMZP::docker
+# zinit snippet OMZP::docker
+# zinit snippet OMZP::docker-compose
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::terraform
-zinit snippet OMZP::docker-compose
 zinit snippet OMZP::colored-man-pages
 
 # Autoload completions
@@ -27,9 +28,9 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # Keybinds
-bindkey "^p" history-search-backward
-bindkey "^n" history-search-forward
-bindkey "^f" autosuggest-accept
+bindkey "^P" history-search-backward
+bindkey "^N" history-search-forward
+bindkey "^F" autosuggest-accept
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^B" backward-char
