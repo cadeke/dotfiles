@@ -1,0 +1,44 @@
+[window]
+opacity = 0.85
+decorations = "None"
+startup_mode = "Maximized"
+
+[font]
+size = 14.0
+
+[font.bold]
+style = "Bold"
+
+[font.normal]
+style = "Medium"
+
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+
+[colors.cursor]
+cursor = "#ffffff"
+
+[colors.selection]
+background = "#44475a"
+foreground = "#ffffff"
+
+[colors.normal]
+black   = "#000000"
+red     = "#ff5555"
+green   = "#50fa7b"
+yellow  = "#f1fa8c"
+blue    = "#bd93f9"
+magenta = "#ff79c6"
+cyan    = "#8be9fd"
+white   = "#bbbbbb"
+
+[colors.bright]
+black   = "#555555"
+red     = "#ff5555"
+green   = "#50fa7b"
+yellow  = "#f1fa8c"
+blue    = "#bd93f9"
+magenta = "#ff79c6"
+cyan    = "#8be9fd"
+white   = "#ffffff"

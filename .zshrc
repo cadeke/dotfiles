@@ -9,21 +9,20 @@ fi
 source "$ZINIT_HOME/zinit.zsh"
 
 # Plugins
+autoload -U compinit && compinit
+
+zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
 
 zinit snippet OMZP::git
-zinit snippet OMZP::python
+# zinit snippet OMZP::python
 # zinit snippet OMZP::docker
 # zinit snippet OMZP::docker-compose
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::terraform
 zinit snippet OMZP::colored-man-pages
-
-# Autoload completions
-autoload -U compinit && compinit
 
 zinit cdreplay -q
 
@@ -81,6 +80,7 @@ export VISUAL="nvim"
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias vim='nvim'
+alias v='nvim'
 alias lg='lazygit'
 
 # Starship prompt
