@@ -68,6 +68,7 @@ if command -v fzf >/dev/null; then
 fi
 
 # Path
+export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/bin
@@ -80,8 +81,13 @@ export VISUAL="nvim"
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias vim='nvim'
+alias v='nvim'
 alias lg='lazygit'
 alias speed='speedtest-cli --simple --secure'
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
