@@ -84,6 +84,8 @@ alias vim='nvim'
 alias v='nvim'
 alias lg='lazygit'
 alias speed='speedtest-cli --simple --secure'
+alias codium='flatpak run com.vscodium.codium'
+alias code='codium'
 
 # Starship prompt
 eval "$(starship init zsh)"

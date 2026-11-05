@@ -58,6 +58,23 @@ return {
       -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'super-tab',
 
+      -- super-tab's <Tab>, except in YAML where it must indent rather than accept
+      -- the (always-open) yamlls completion menu. Accept with <C-y> there instead.
+      ['<Tab>'] = {
+        function(cmp)
+          if vim.bo.filetype == 'yaml' then
+            return false
+          end
+          if cmp.snippet_active() then
+            return cmp.accept()
+          end
+          return cmp.select_and_accept()
+        end,
+        'snippet_forward',
+        'fallback',
+      },
+      ['<C-y>'] = { 'select_and_accept' },
+
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
     },

@@ -171,7 +171,13 @@ rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 
 require('lazy').setup({
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  {
+    'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+    opts = {
+      -- keep the plugin defaults (netrw, tutor) and leave YAML to after/ftplugin/yaml.lua
+      filetype_exclude = { 'netrw', 'tutor', 'yaml' },
+    },
+  },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --

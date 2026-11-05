@@ -36,7 +36,7 @@ return {
         end
 
         pcall(vim.treesitter.start, args.buf, lang)
-        if lang ~= 'ruby' then
+        if lang ~= 'ruby' and lang ~= 'yaml' then
           vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
       end,
