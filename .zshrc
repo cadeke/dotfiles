@@ -40,17 +40,14 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=5000
-HISTDUP=erase
+HISTSIZE=50000
+SAVEHIST=50000
 
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 
 # Fzf
@@ -92,5 +89,21 @@ alias speed='speedtest-cli --simple --secure'
 eval "$(starship init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Lazy-load nvm: sourcing nvm.sh is slow, so defer it until nvm/node/npm/npx is used.
+if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+  # Keep the newest installed node (and its global bins, e.g. prettier) on PATH
+  # without sourcing nvm, so editors and scripts still find them.
+  _nvm_bin=("$NVM_DIR"/versions/node/v*/bin(Nn[-1]))
+  [[ -n "$_nvm_bin" ]] && export PATH="$_nvm_bin:$PATH"
+  unset _nvm_bin
+
+  _nvm_lazy_load() {
+    unset -f nvm node npm npx _nvm_lazy_load
+    \. "$NVM_DIR/nvm.sh"
+  }
+  for _cmd in nvm node npm npx; do
+    eval "$_cmd() { _nvm_lazy_load; $_cmd \"\$@\"; }"
+  done
+  unset _cmd
+fi
