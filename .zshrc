@@ -33,7 +33,6 @@ bindkey "^F" autosuggest-accept
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^B" backward-char
-bindkey "^F" forward-char
 
 # Completions
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -60,7 +59,7 @@ if [[ -r /usr/share/fzf/shell/key-bindings.zsh ]]; then
 fi
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}' 2>/dev/null"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {} 2>/dev/null'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 if command -v fzf >/dev/null; then
@@ -68,7 +67,9 @@ if command -v fzf >/dev/null; then
 fi
 
 # Path
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin 
 export PATH=$PATH:$HOME/bin
