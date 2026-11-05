@@ -1,0 +1,23 @@
+[user]
+    name = Casper De Keyser
+    email = casper.dekeyser@imp.ac.at
+    signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+    format = ssh
+
+[commit]
+    gpgsign = true
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[push]
+    autoSetupRemote = true
+    default = current
+
+[init]
+    defaultBranch = main

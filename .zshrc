@@ -68,10 +68,12 @@ if command -v fzf >/dev/null; then
 fi
 
 # Path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Editor
 export EDITOR="nvim"
