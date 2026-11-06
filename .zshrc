@@ -87,6 +87,22 @@ alias speed='speedtest-cli --simple --secure'
 alias codium='flatpak run com.vscodium.codium'
 alias code='codium'
 alias k='kubectl'
+alias pm='podman'
+
+# Per-shell kubeconfig: every shell (e.g. each tmux window) gets its own empty
+# kubeconfig, so `oc login` / `kubectl config use-context` only affect that
+# shell and new shells start logged out. Respects an externally set KUBECONFIG.
+_kube_dir="${XDG_RUNTIME_DIR:-/tmp}/kubeconfigs"
+if [[ -z $KUBECONFIG || $KUBECONFIG == $_kube_dir/* ]]; then
+  # Also replaces a file inherited from another shell (e.g. via the tmux server env)
+  if [[ $KUBECONFIG != $_kube_dir/$$.yaml ]]; then
+    mkdir -p -m 700 "$_kube_dir"
+    export KUBECONFIG="$_kube_dir/$$.yaml"
+    : > "$KUBECONFIG" && chmod 600 "$KUBECONFIG"
+    zshexit() { rm -f -- "$KUBECONFIG"; }
+  fi
+fi
+unset _kube_dir
 
 # Starship prompt
 eval "$(starship init zsh)"

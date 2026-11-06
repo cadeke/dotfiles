@@ -24,6 +24,11 @@ return {
           },
         },
       },
+      -- keep the cursor in the tree on the file of the current buffer,
+      -- so opening a file (from the tree or anywhere else) selects it
+      update_focused_file = {
+        enable = true,
+      },
       git = {
         ignore = false,
       },
