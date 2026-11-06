@@ -2,7 +2,8 @@
 
 format = """
 $directory\
-$kubernetes\
+${custom.ocp}\
+${custom.k8s}\
 $terraform\
 $git_branch\
 $git_state\
@@ -31,6 +32,17 @@ conflicted = ""
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
-[kubernetes]
-format = "⎈ [$context]($style) "
+# Active cluster, hidden when logged out (see .config/starship/kube.sh).
+# `oc login` writes to the same kubeconfig kubectl uses, so both are covered.
+# No OpenShift glyph exists in Nerd Fonts, so OCP gets the Red Hat logo.
+[custom.ocp]
+command = "$HOME/.config/starship/kube.sh ocp"
+when = "$HOME/.config/starship/kube.sh ocp"
+format = "[\U000f111b $output]($style) "
+style = "bold red"
+
+[custom.k8s]
+command = "$HOME/.config/starship/kube.sh k8s"
+when = "$HOME/.config/starship/kube.sh k8s"
+format = "[\U000f10fe $output]($style) "
 style = "bold blue"

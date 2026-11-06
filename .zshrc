@@ -18,10 +18,10 @@ zinit light zsh-users/zsh-autosuggestions
 
 zinit snippet OMZP::git
 zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::kubectl
 # zinit snippet OMZP::python
 # zinit snippet OMZP::docker
 # zinit snippet OMZP::docker-compose
-# zinit snippet OMZP::kubectl
 # zinit snippet OMZP::terraform
 
 zinit cdreplay -q
@@ -78,14 +78,15 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Aliases
-alias ls='ls --color=auto'
 alias ll='ls -la'
 alias vim='nvim'
+alias ls='ls --color=auto'
 alias v='nvim'
 alias lg='lazygit'
 alias speed='speedtest-cli --simple --secure'
 alias codium='flatpak run com.vscodium.codium'
 alias code='codium'
+alias k='kubectl'
 
 # Starship prompt
 eval "$(starship init zsh)"
