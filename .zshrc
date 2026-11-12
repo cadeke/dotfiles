@@ -19,6 +19,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit snippet OMZP::git
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::kubectl
+zinit snippet OMZP::opentofu
 # zinit snippet OMZP::python
 # zinit snippet OMZP::docker
 # zinit snippet OMZP::docker-compose
@@ -88,6 +89,13 @@ alias codium='flatpak run com.vscodium.codium'
 alias code='codium'
 alias k='kubectl'
 alias pm='podman'
+alias tg='terragrunt'
+
+# Convert OpenTofu aliases to Terraform
+for a in ${(k)aliases[(I)tt*]}; do
+  alias "tf${a#tt}"="${aliases[$a]}"
+  unalias "$a"
+done
 
 # Per-shell kubeconfig: every shell (e.g. each tmux window) gets its own empty
 # kubeconfig, so `oc login` / `kubectl config use-context` only affect that

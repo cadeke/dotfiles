@@ -9,7 +9,7 @@ return {
     local ts = require 'nvim-treesitter'
 
     -- Parsers to install up front (no-op if already installed; runs asynchronously)
-    ts.install { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+    ts.install { 'bash', 'c', 'diff', 'hcl', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'terraform', 'vim', 'vimdoc' }
 
     local available = ts.get_available()
     local requested = {}

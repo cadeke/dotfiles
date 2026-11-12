@@ -62,6 +62,9 @@ return {
       yaml = { 'prettierd', 'prettier' },
       sh = { 'shfmt' },
       bash = { 'shfmt' },
+      terraform = { 'tofu_fmt' },
+      ['terraform-vars'] = { 'tofu_fmt' },
+      hcl = { 'terragrunt_hclfmt' },
     },
   },
 }
