@@ -401,6 +401,13 @@ require('lazy').setup({
         },
       }
 
+      -- Toggle the inline diagnostic messages; signs and underlines stay visible
+      local inline_diagnostics = vim.diagnostic.config().virtual_text
+      vim.keymap.set('n', '<leader>td', function()
+        local enabled = vim.diagnostic.config().virtual_text
+        vim.diagnostic.config { virtual_text = not enabled and inline_diagnostics or false }
+      end, { desc = '[T]oggle inline [d]iagnostics' })
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -473,6 +480,8 @@ require('lazy').setup({
         tflint = {},
 
         ltex = {
+          -- JDK 25+ caps XML entity size below what LanguageTool's grammar.xml needs
+          cmd_env = { JAVA_OPTS = '-Djdk.xml.totalEntitySizeLimit=0' },
           settings = {
             ltex = {
               checkFrequency = 'save',

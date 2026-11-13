@@ -20,6 +20,7 @@ zinit snippet OMZP::git
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::opentofu
+zinit snippet OMZP::azure
 # zinit snippet OMZP::python
 # zinit snippet OMZP::docker
 # zinit snippet OMZP::docker-compose
@@ -114,6 +115,9 @@ unset _kube_dir
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+# Mise
+eval "$(mise activate zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 
