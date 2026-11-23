@@ -31,7 +31,7 @@ zinit cdreplay -q
 # Keybinds
 bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
-bindkey "^F" autosuggest-accept
+bindkey "^F" forward-char
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^B" backward-char
@@ -74,6 +74,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Editor
 export EDITOR="nvim"

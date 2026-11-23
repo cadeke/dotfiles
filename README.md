@@ -19,7 +19,7 @@ Stow ignores `README.md`, `.git` and `.gitignore` by default.
 | `.zshrc` | zsh (zinit, fzf, starship, nvm) |
 | `.gitconfig`, `.config/git/allowed_signers` | git, SSH commit signing |
 | `.config/nvim` | Neovim (kickstart-based, plugins in `lua/custom/plugins`) |
-| `.config/tmux` | tmux (prefix `C-Space`, AZERTY-friendly window bindings) |
+| `.config/tmux` | tmux (prefix `C-Space`, AZERTY-friendly window bindings, TPM with resurrect + continuum) |
 | `.config/kitty`, `.config/alacritty` | terminals |
 | `.config/starship.toml` | prompt |
 

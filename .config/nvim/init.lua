@@ -470,6 +470,26 @@ require('lazy').setup({
               keyOrdering = false,
               format = { enable = true },
               validate = true,
+              -- Settings schemas outrank SchemaStore's filename guesses (e.g. any cluster.yaml
+              -- -> "RKE Cluster Configuration"). Globs get a '**/' prefix and match the full path;
+              -- '!' excludes, so kustomization.yaml, Helm charts and workflows keep SchemaStore.
+              schemas = {
+                kubernetes = {
+                  'clusters/**/*.{yaml,yml}',
+                  'bootstrap/**/*.{yaml,yml}',
+                  'platform/**/*.{yaml,yml}',
+                  'manifests/**/*.{yaml,yml}',
+                  'k8s/**/*.{yaml,yml}',
+                  'base/**/*.{yaml,yml}',
+                  'overlays/**/*.{yaml,yml}',
+                  'components/**/*.{yaml,yml}',
+                  '!kustomization.{yaml,yml}',
+                  '!templates/**',
+                  '!values*.{yaml,yml}',
+                  '!Chart.{yaml,yml}',
+                  '!.github/**',
+                },
+              },
             },
           },
         },
